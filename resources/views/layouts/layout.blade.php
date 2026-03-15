@@ -26,10 +26,8 @@
     @endif
 </head>
 
-<body class="font-poppins">
-    <x-navbar/>
-
-    <main class="mx-8 sm:mx-[71px] pt-[140px]">
+<body class="font-poppins md:h-screen">
+    <main class="md:h-[89%]">
         @yield('content')
     </main>
 
