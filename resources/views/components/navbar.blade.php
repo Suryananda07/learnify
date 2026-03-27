@@ -1,14 +1,13 @@
 <header x-data="{ open: false }" @click.outside="open=false"
     class="w-screen px-8 sm:px-[71px] py-8 fixed z-[9999] bg-white">
     <div class="flex justify-between items-center">
-        <a href="/">
-            <h1 class="font-semibold text-3xl sm:text-[32px]">Learn<span class="text-primary">ify</span></h1>
-        </a>
+        <a href="/" class="font-semibold text-3xl sm:text-[32px]">Learn<span class="text-primary">ify</span></a>
         <div class="flex gap-3 lg:gap-5.5 hidden md:flex">
             <x-nav-link href="/">Home</x-nav-link>
             <x-nav-link href="/course">Courses</x-nav-link>
             <x-nav-link href="/about">About Us</x-nav-link>
             <x-nav-link href="/contact">Contact</x-nav-link>
+            <x-nav-link href="/admin/dashboard">Admin</x-nav-link>
         </div>
         <div class="flex items-center gap-3 hidden md:block">
             <x-button href="/register">Register</x-button>

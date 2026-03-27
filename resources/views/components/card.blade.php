@@ -12,7 +12,9 @@
                 requests and return responses
                 efficiently. This course explains the...</p>
         </div>
-        <a href="/" class="">Read More</a>
+        <div class="">
+            <x-button href='/lesson'>Read More</x-button>
+        </div>
     </div>
     <div
         class="text-base font-semibold text-center text-white rounded-l-lg px-4 py-1 bg-primary absolute top-[31px] right-0">

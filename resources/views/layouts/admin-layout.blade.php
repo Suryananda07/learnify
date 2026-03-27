@@ -26,14 +26,35 @@
     @endif
 </head>
 
-<body class="font-poppins">
-    <x-navbar/>
-
-<main class="mx-8 sm:mx-[50px] pt-[140px]">
+<body class="font-poppins flex">
+    <aside class="flex flex-col items-center lg:items-start w-fit lg:w-55 bg-[#3932A7] h-screen py-4.5">
+        <div class="hidden lg:flex lg:justify-end text-white pr-7 w-full">
+            <h1 class=" font-semibold text-2xl text-right">Learnify</h1>
+        </div>
+        <div class="mt-13 flex gap-3.5 lg:bg-primary py-2 px-4">
+            <img src="{{ asset('assets/author-img.png') }}" alt="" class="size-7 sm:size-10 rounded-full">
+            <div class="hidden lg:flex flex-col text-white">
+                <h2 class="text-base font-semibold">Admin</h2>
+                <p class="text-xs">admin@example.com</p>
+            </div>
+        </div>
+        <div class="mt-7">
+            <div class="flex flex-col gap-7">
+                <x-side-link href="/admin/dashboard" icon="{{ asset('assets/icon_dashboard.png') }}">
+                    Dashboard
+                </x-side-link>
+                <x-side-link href="/admin/user" icon="{{ asset('assets/icon_user.png') }}">
+                    Users
+                </x-side-link>
+                <x-side-link href="/admin/course" icon="{{ asset('assets/icon_course.png') }}">
+                    Courses
+                </x-side-link>
+            </div>
+        </div>
+    </aside>
+    <main class="py-4.5 px-3 sm:px-7.5 flex-1 bg-[#F5F5F5]">
         @yield('content')
     </main>
-
-    <x-footer/>
 </body>
 
 </html>

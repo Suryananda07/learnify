@@ -27,13 +27,22 @@
 </head>
 
 <body class="font-poppins">
-    <x-navbar/>
-
-<main class="mx-8 sm:mx-[50px] pt-[140px]">
+    <nav class="fixed py-6 md:py-8 px-8 md:px-15 bg-white w-full">
+        <a href="/" class="font-semibold text-3xl sm:text-[32px]">Learn<span class="text-primary">ify</span></a>
+    </nav>
+    <main class="pt-30 pb-15 px-8 md:px-15">
+        <h1 class="font-bold text-2xl md:text-4xl">JavaScript Essentials Quiz</h1>
+        <form action="" class="flex flex-col gap-8 mt-9 md:mt-18">
+            @csrf
+            <x-question />
+            <x-question />
+            <x-question />
+            <div class="">
+                <x-button size="very-large" type="quiz">Submit</x-button>
+            </div>
+        </form>
         @yield('content')
     </main>
-
-    <x-footer/>
 </body>
 
 </html>
