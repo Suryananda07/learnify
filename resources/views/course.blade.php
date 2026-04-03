@@ -11,36 +11,8 @@
         </form>
     </section>
 
-    <section x-data class="mt-5 overflow-x-auto whitespace-nowrap ">
+    <section x-data class="mt-5 overflow-x-auto whitespace-nowrap [&::-webkit-scrollbar]:hidden">
         <div class="inline-flex gap-4">
-            <a href="{{ route('course', ['category' => 'allCategory']) }}"
-                class="text-xl font-medium text-white px-3 py-1 gap-1.5 rounded-lg text-center shrink-0
-                {{ request('category') === 'allCategory' ? 'bg-[#A6A7E9]' : 'bg-primary hover:bg-[#A6A7E9]' }}">All
-                Category</a>
-            <a href="{{ route('course', ['category' => 'allCategory']) }}"
-                class="text-xl font-medium text-white px-3 py-1 gap-1.5 rounded-lg text-center shrink-0
-                {{ request('category') === 'allCategory' ? 'bg-[#A6A7E9]' : 'bg-primary hover:bg-[#A6A7E9]' }}">All
-                Category</a>
-            <a href="{{ route('course', ['category' => 'allCategory']) }}"
-                class="text-xl font-medium text-white px-3 py-1 gap-1.5 rounded-lg text-center shrink-0
-                {{ request('category') === 'allCategory' ? 'bg-[#A6A7E9]' : 'bg-primary hover:bg-[#A6A7E9]' }}">All
-                Category</a>
-            <a href="{{ route('course', ['category' => 'allCategory']) }}"
-                class="text-xl font-medium text-white px-3 py-1 gap-1.5 rounded-lg text-center shrink-0
-                {{ request('category') === 'allCategory' ? 'bg-[#A6A7E9]' : 'bg-primary hover:bg-[#A6A7E9]' }}">All
-                Category</a>
-            <a href="{{ route('course', ['category' => 'allCategory']) }}"
-                class="text-xl font-medium text-white px-3 py-1 gap-1.5 rounded-lg text-center shrink-0
-                {{ request('category') === 'allCategory' ? 'bg-[#A6A7E9]' : 'bg-primary hover:bg-[#A6A7E9]' }}">All
-                Category</a>
-            <a href="{{ route('course', ['category' => 'allCategory']) }}"
-                class="text-xl font-medium text-white px-3 py-1 gap-1.5 rounded-lg text-center shrink-0
-                {{ request('category') === 'allCategory' ? 'bg-[#A6A7E9]' : 'bg-primary hover:bg-[#A6A7E9]' }}">All
-                Category</a>
-            <a href="{{ route('course', ['category' => 'allCategory']) }}"
-                class="text-xl font-medium text-white px-3 py-1 gap-1.5 rounded-lg text-center shrink-0
-                {{ request('category') === 'allCategory' ? 'bg-[#A6A7E9]' : 'bg-primary hover:bg-[#A6A7E9]' }}">All
-                Category</a>
             <a href="{{ route('course', ['category' => 'allCategory']) }}"
                 class="text-xl font-medium text-white px-3 py-1 gap-1.5 rounded-lg text-center shrink-0
                 {{ request('category') === 'allCategory' ? 'bg-[#A6A7E9]' : 'bg-primary hover:bg-[#A6A7E9]' }}">All

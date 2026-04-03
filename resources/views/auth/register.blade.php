@@ -20,7 +20,7 @@
 
             </form>
             <div class="flex w-full justify-center">
-                <p class="text-sm sm:text-base">Sudah punya akun? <a href="/loginab"
+                <p class="text-sm sm:text-base">Sudah punya akun? <a href="/login"
                         class=" hover:underline hover:text-primary">Login here</a></p>
             </div>
         </div>

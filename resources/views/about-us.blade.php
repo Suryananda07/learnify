@@ -14,17 +14,17 @@
             <div class="mt-15 sm:mt-23 grid grid-cols-2 sm:grid-cols-4 justify-between gap-5 md:gap-10 lg:gap-20">
                 <div
                     class="bg-white border-2 border-gray-200 rounded-xl shadow-xl px-4 py-6 flex flex-col justify-center items-center">
-                    <h2 class="text-primary font-bold text-3xl lg:text-5xl">500</h2>
+                    <h2 class="text-primary font-bold text-3xl lg:text-5xl">{{ $totalUser }}</h2>
                     <p class="text-[#717182] text-sm lg:text-xl">Pelajar aktif</p>
                 </div>
                 <div
                     class="bg-white border-2 border-gray-200 rounded-xl shadow-xl px-4 py-6 flex flex-col justify-center items-center">
-                    <h2 class="text-primary font-bold text-3xl lg:text-5xl">50+</h2>
+                    <h2 class="text-primary font-bold text-3xl lg:text-5xl">{{ $totalCategory }}</h2>
                     <p class="text-[#717182]  text-sm lg:text-xl">Categories</p>
                 </div>
                 <div
                     class="bg-white border-2 border-gray-200 rounded-xl shadow-xl px-4 py-6 flex flex-col justify-center items-center">
-                    <h2 class="text-primary font-bold text-3xl lg:text-5xl">30+</h2>
+                    <h2 class="text-primary font-bold text-3xl lg:text-5xl">{{ $totalCourse }}</h2>
                     <p class="text-[#717182]  text-sm lg:text-xl">Courses</p>
                 </div>
                 <div

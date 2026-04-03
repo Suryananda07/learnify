@@ -25,7 +25,7 @@ class AdminController extends Controller
         ->when($role && $role !== 'allUser', function ($query) use ($role) {
             $query->where('role', $role);
         })
-        ->get();
+        ->paginate(5);
 
     return view('admin.user', compact('allUsers'));
 }
