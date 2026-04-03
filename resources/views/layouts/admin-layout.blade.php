@@ -27,15 +27,15 @@
 </head>
 
 <body class="font-poppins flex">
-    <aside class="flex flex-col items-center lg:items-start w-fit lg:w-55 bg-[#3932A7] h-screen py-4.5">
+    <aside class="fixed top-0 left-0 flex flex-col items-center lg:items-start w-fit lg:w-55 bg-[#3932A7] h-screen py-4.5">
         <div class="hidden lg:flex lg:justify-end text-white pr-7 w-full">
             <h1 class=" font-semibold text-2xl text-right">Learnify</h1>
         </div>
-        <div class="mt-13 flex gap-3.5 lg:bg-primary py-2 px-4">
+        <div class="mt-13 flex gap-3.5 lg:bg-primary py-2 px-4 w-full">
             <img src="{{ asset('assets/author-img.png') }}" alt="" class="size-7 sm:size-10 rounded-full">
             <div class="hidden lg:flex flex-col text-white">
-                <h2 class="text-base font-semibold">Admin</h2>
-                <p class="text-xs">admin@example.com</p>
+                <h2 class="text-base font-semibold">{{ Auth::user()->name }}</h2>
+                <p class="text-xs">{{ Auth::user()->email }}</p>
             </div>
         </div>
         <div class="mt-7">
@@ -52,7 +52,7 @@
             </div>
         </div>
     </aside>
-    <main class="py-4.5 px-3 sm:px-7.5 flex-1 bg-[#F5F5F5]">
+    <main class="py-4.5 px-3 sm:px-7.5 flex-1 bg-white ml-15 sm:ml-18 lg:ml-55">
         @yield('content')
     </main>
 </body>

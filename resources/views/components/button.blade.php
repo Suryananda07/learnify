@@ -2,6 +2,7 @@
     'type' => 'solid',
     'size' => 'base',
     'href' => null,
+    'buttonType' => 'button',
 ])
 
 @php
@@ -25,34 +26,30 @@
     }
 
     switch ($type) {
-    case 'solid':
-        $colorClass = 'bg-primary text-white border-2 border-primary hover:opacity-90';
-        break;
+        case 'solid':
+            $colorClass = 'bg-primary text-white border-2 border-primary hover:opacity-90';
+            break;
 
-    case 'quiz':
-        $colorClass = 'bg-purple-100 text-black border-2 border-purple-300 hover:opacity-90';
-        break;
+        case 'quiz':
+            $colorClass = 'bg-purple-100 text-black border-2 border-purple-300 hover:opacity-90';
+            break;
 
-    case 'outline':
-        $colorClass = 'bg-transparent text-primary border-2 border-primary hover:bg-primary hover:text-white';
-        break;
+        case 'outline':
+            $colorClass = 'bg-transparent text-primary border-2 border-primary hover:bg-primary hover:text-white';
+            break;
 
-    case 'course':
-        $colorClass = 'text-[#9100FF] bg-white rounded-xl font-bold';
-        break;
+        case 'course':
+            $colorClass = 'text-[#9100FF] bg-white rounded-xl font-bold';
+            break;
 
-    case 'category':
-        $colorClass = 'bg-[#D9D9D9] text-xl';
-        break;
+        case 'admin':
+            $colorClass = 'text-[#C5BED9] text-base border-2 border-[#C5BED9] hover:text-white hover:bg-[#C5BED9]';
+            break;
 
-    case 'admin':
-        $colorClass = 'text-[#C5BED9] text-base border-2 border-[#C5BED9] hover:text-white hover:bg-[#C5BED9]';
-        break;
-
-    default:
-        $colorClass = 'bg-primary text-white border-2 border-primary hover:opacity-90';
-        break;
-}
+        default:
+            $colorClass = 'bg-primary text-white border-2 border-primary hover:opacity-90';
+            break;
+    }
 
     $baseClass = "inline-flex items-center justify-center rounded-lg font-medium transition-all duration-300 cursor-pointer {$sizeClass} {$colorClass}";
 @endphp
@@ -65,7 +62,7 @@
         @endif
     </a>
 @else
-    <button {{ $attributes->class([$baseClass]) }}>
+    <button type="{{ $buttonType }}" {{ $attributes->class([$baseClass]) }}>
         {{ $slot }}
         @if (isset($icon) && $icon->isNotEmpty())
             <span class="{{ $iconSize }}">{{ $icon }}</span>

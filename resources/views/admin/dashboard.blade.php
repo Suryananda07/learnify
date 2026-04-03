@@ -16,7 +16,7 @@
                         class="hidden md:block size-5 lg:size-7">
                     <p class="text-[8px] sm:text-sm lg:text-base text-center md:text-left w-full">Total Users</p>
                 </div>
-                <p class="font-medium text-sm sm:text-lg md:text-2xl lg:text-4xl text-center md:text-left md:ml-10">450</p>
+                <p class="font-medium text-sm sm:text-lg md:text-2xl lg:text-4xl text-center md:text-left md:ml-10">{{ $totalUsers }}</p>
             </div>
             <div class="flex flex-col gap-1 sm:gap-2.5 bg-[#ECE9FC] px-1 py-2 sm:p-3 md:w-38 lg:w-[232px] rounded-xl">
                 <div class="flex gap-3 items-center">
@@ -24,15 +24,15 @@
                         class="hidden md:block size-5 lg:size-7">
                     <p class="text-[8px] sm:text-sm lg:text-base text-center md:text-left w-full">Total Courses</p>
                 </div>
-                <p class="font-medium text-sm sm:text-lg md:text-2xl lg:text-4xl text-center md:text-left md:ml-10">25</p>
+                <p class="font-medium text-sm sm:text-lg md:text-2xl lg:text-4xl text-center md:text-left md:ml-10">{{ $totalCourses }}</p>
             </div>
             <div class="flex flex-col gap-1 sm:gap-2.5 bg-[#ECE9FC] px-1 py-2 sm:p-3 md:w-38 lg:w-[232px] rounded-xl">
                 <div class="flex gap-3 items-center">
                     <img src="{{ asset('assets/icon_total_user.png') }}" alt=""
                         class="hidden md:block size-5 lg:size-7">
-                    <p class="text-[8px] sm:text-sm lg:text-base text-center md:text-left w-full">Total Lessons</p>
+                    <p class="text-[8px] sm:text-sm lg:text-base text-center md:text-left w-full">Total Categories</p>
                 </div>
-                <p class="font-medium text-sm sm:text-lg md:text-2xl lg:text-4xl text-center md:text-left md:ml-10">200</p>
+                <p class="font-medium text-sm sm:text-lg md:text-2xl lg:text-4xl text-center md:text-left md:ml-10">{{ $totalCategories }}</p>
             </div>
         </div>
     </div>
@@ -48,38 +48,16 @@
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-100">
-                <tr class="hover:bg-gray-50 transition">
-                    <td class="px-2 sm:px-4 py-4 font-medium">helo</td>
-                    <td class="px-2 sm:px-4 py-4 text-gray-400">hai</td>
-                    <td class="px-2 sm:px-4 py-4">kamu</td>
-                    <td class="px-2 sm:px-4 py-4">
-                        <button class=hover:text-purple-600 transition font-medium">Edit</button>
-                    </td>
-                </tr>
-                <tr class="hover:bg-gray-50 transition">
-                    <td class="px-2 sm:px-4 py-4 font-medium">helo</td>
-                    <td class="px-2 sm:px-4 py-4 text-gray-400">hai</td>
-                    <td class="px-2 sm:px-4 py-4">kamu</td>
-                    <td class="px-2 sm:px-4 py-4">
-                        <button class=hover:text-purple-600 transition font-medium">Edit</button>
-                    </td>
-                </tr>
-                <tr class="hover:bg-gray-50 transition">
-                    <td class="px-2 sm:px-4 py-4 font-medium">helo</td>
-                    <td class="px-2 sm:px-4 py-4 text-gray-400">hai</td>
-                    <td class="px-2 sm:px-4 py-4">kamu</td>
-                    <td class="px-2 sm:px-4 py-4">
-                        <button class=hover:text-purple-600 transition font-medium">Edit</button>
-                    </td>
-                </tr>
-                <tr class="hover:bg-gray-50 transition">
-                    <td class="px-2 sm:px-4 py-4 font-medium">helo</td>
-                    <td class="px-2 sm:px-4 py-4 text-gray-400">hai</td>
-                    <td class="px-2 sm:px-4 py-4">kamu</td>
-                    <td class="px-2 sm:px-4 py-4">
-                        <button class=hover:text-purple-600 transition font-medium">Edit</button>
-                    </td>
-                </tr>
+                @foreach ($users as $user)
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-2 sm:px-4 py-4 font-medium">{{ $user->name }}</td>
+                        <td class="px-2 sm:px-4 py-4 text-gray-400">{{ $user->email }}</td>
+                        <td class="px-2 sm:px-4 py-4">{{ $user->role }}</td>
+                        <td class="px-2 sm:px-4 py-4">
+                            <a href="" class="hover:text-purple-600 transition font-medium">Edit</button>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
         <div class="flex justify-center py-5 md:py-11.5">

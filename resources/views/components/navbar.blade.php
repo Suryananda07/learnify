@@ -7,12 +7,24 @@
             <x-nav-link href="/course">Courses</x-nav-link>
             <x-nav-link href="/about">About Us</x-nav-link>
             <x-nav-link href="/contact">Contact</x-nav-link>
+            @can('verifikasi-info')    
             <x-nav-link href="/admin/dashboard">Admin</x-nav-link>
+            @endcan
         </div>
-        <div class="flex items-center gap-3 hidden md:block">
-            <x-button href="/register">Register</x-button>
-            <x-button href="/login" type="outline">Login</x-button>
-        </div>
+        @auth
+            <div class="hidden md:flex gap-3">
+                <a href="">
+                    <img src="{{ asset('assets/author-img.png') }}" alt="">
+                </a>
+                <x-button href="{{ route('logout') }}">Logout</x-button>
+            </div>
+        @endauth
+        @guest
+            <div class="flex items-center gap-3 hidden md:block">
+                <x-button href="/register">Register</x-button>
+                <x-button href="/login" type="outline">Login</x-button>
+            </div>
+        @endguest
 
         <button @click="open = !open" class="block md:hidden">
             <svg x-show="!open" class="size-8" xmlns="http://www.w3.org/2000/svg"

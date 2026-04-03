@@ -6,16 +6,14 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class card extends Component
+class AddSubTopic extends Component
 {
     /**
      * Create a new component instance.
      */
-    public $course;
-
-    public function __construct($course)
+    public function __construct()
     {
-        $this->course = $course;
+        //
     }
 
     /**
@@ -23,6 +21,6 @@ class card extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.card');
+        return view('components.add-sub-topic');
     }
 }

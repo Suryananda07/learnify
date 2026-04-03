@@ -9,12 +9,12 @@
                 <h1 class="font-semibold text-4xl text-center w-[60%]">Welcome Back To Learn<span
                         class="text-primary">ify</span></h1>
             </div>
-            <form action="POST" action="{{ route('register.post') }}" class="flex flex-col gap-6">
+            <form method="POST" action="{{ route('login.post') }}" class="flex flex-col gap-6">
                 @csrf
-                <x-input label="Nama" name="name" placeholder="Enter your fullname" :required="true" />
+                <x-input label="Email" name="email" type="email" placeholder="Enter your email" :required="true" />
                 <x-input label="Password" name="password" type="password" placeholder="Enter your password"
                     :required="true" />
-                <x-button>Login</x-button>
+                <x-button buttonType="submit">Login</x-button>
             </form>
             <div class="flex w-full justify-center">
                 <p class="text-sm sm:text-base">Belum punya akun? <a href="/register" class=" hover:underline hover:text-primary">Register here</a></p>
