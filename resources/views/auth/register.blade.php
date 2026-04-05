@@ -3,10 +3,10 @@
 @section('title', 'Register')
 
 @section('content')
-    <section class="mt-50 md:mt-15 flex flex-col md:flex-row justify-center items-center gap-10 w-screen h-full">
-        <div class="w-[90%] md:w-[45%] bg-white shadow-2xl rounded-xl flex flex-col gap-6 px-8 py-6">
+    <section class="mt-30 md:mt-5 flex flex-col md:flex-row justify-center items-center gap-10 w-screen h-full">
+        <div class="w-[90%] md:w-[45%] bg-white shadow-2xl rounded-xl flex flex-col gap-3 px-8 py-3">
             <h1 class="font-semibold text-4xl text-center">Welcome To Learn<span class="text-primary">ify</span></h1>
-            <form method="POST" action="{{ route('register.post') }}" class="flex flex-col gap-6">
+            <form method="POST" action="{{ route('register.post') }}" class="flex flex-col gap-3">
                 @csrf
                 <x-input label="Nama" name="name" placeholder="Enter your fullname" :required="true" />
                 <x-input label="Username" name="username" placeholder="Enter your username" :required="true" />

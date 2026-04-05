@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>@yield('title') - Learnify</title>
+        <title>@yield('title') {{ $course->category->name }} - Learnify</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,8 +33,8 @@
                 <a href="/">
                     <h1 class="font-semibold text-3xl sm:text-[32px]">Learn<span class="text-primary">ify</span></h1>
                 </a>
-                <a href="" class="size-10 sm:size-12">
-                    <img src="{{ asset('assets/foto-user.png') }}" alt="">
+                <a href="{{ route('profiles.edit', auth()->id()) }}" class="size-10 sm:size-12">
+                    <img src="{{ auth()->user()->image ? asset('storage/' . auth()->user()->image) : asset('assets/author-img.png') }}" alt="" class="rounded-full size-11">
                 </a>
             </div>
         </header>
@@ -42,8 +42,9 @@
 
         <main class="mx-8 sm:mx-18 lg:mx-45 pt-25">
             <div class="">
-                <p class="flex text-base items-center sm:text-xl text-slate-500 size-5 sm:size-7.5">Course <img
-                        src="{{ asset('assets/keyboard_arrow_up.png') }}" alt=""> Javascript</p>
+                <p class="flex gap-1 text-base items-center sm:text-xl text-slate-500 size-5 sm:size-7.5">Course <img
+                        src="{{ asset('assets/keyboard_arrow_up.png') }}" alt=""> {{ $course->category->name }}
+                </p>
             </div>
             <div class="bg-[#A6A7E9] rounded-lg w-fit px-2 text-slate-600 mt-8">
                 <p class="text- base sm:text-xl flex items-center"><svg xmlns="http://www.w3.org/2000/svg"
@@ -51,73 +52,51 @@
                         viewBox="0 0 448 512"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
                         <path
                             d="M384 512L96 512c-53 0-96-43-96-96L0 96C0 43 43 0 96 0L400 0c26.5 0 48 21.5 48 48l0 288c0 20.9-13.4 38.7-32 45.3l0 66.7c17.7 0 32 14.3 32 32s-14.3 32-32 32l-32 0zM96 384c-17.7 0-32 14.3-32 32s14.3 32 32 32l256 0 0-64-256 0zm32-232c0 13.3 10.7 24 24 24l176 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-176 0c-13.3 0-24 10.7-24 24zm24 72c-13.3 0-24 10.7-24 24s10.7 24 24 24l176 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-176 0z" />
-                    </svg> Course · Javascript</p>
+                    </svg> Course · {{ $course->title }}</p>
             </div>
-            <h1 class="font-bold text-2xl sm:text-[32px] mt-8">Pegenalan Javascript</h1>
-            <p class="text-xs sm:text-xl flex items-center gap-2 mt-3"><svg xmlns="http://www.w3.org/2000/svg" class="size-5"
+            <h1 class="font-bold text-2xl sm:text-[32px] mt-8">{{ $course->title }}</h1>
+            <p class="text-xs sm:text-xl flex items-center gap-2 mt-3"><svg xmlns="http://www.w3.org/2000/svg"
+                    class="size-5"
                     viewBox="0 0 512 512"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
                     <path
                         d="M448 64c2 0 3.9 .1 5.8 .3l-95.7 95.7 67.9 0 72-72c8.8 11 14 24.9 14 40l0 256c0 35.3-28.7 64-64 64L64 448c-35.3 0-64-28.7-64-64L0 128C0 92.7 28.7 64 64 64l70.1 0-96 96 67.9 0 95-95 1-1 92.1 0-96 96 67.9 0 95-95 1-1 86.1 0z" />
-                </svg> Video 15 menit <svg xmlns="http://www.w3.org/2000/svg" class="size-5"
+                </svg> Video {{ $course->duration_video }} menit <svg xmlns="http://www.w3.org/2000/svg" class="size-5"
                     viewBox="0 0 448 512"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
                     <path
                         d="M384 512L96 512c-53 0-96-43-96-96L0 96C0 43 43 0 96 0L400 0c26.5 0 48 21.5 48 48l0 288c0 20.9-13.4 38.7-32 45.3l0 66.7c17.7 0 32 14.3 32 32s-14.3 32-32 32l-32 0zM96 384c-17.7 0-32 14.3-32 32s14.3 32 32 32l256 0 0-64-256 0zm32-232c0 13.3 10.7 24 24 24l176 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-176 0c-13.3 0-24 10.7-24 24zm24 72c-13.3 0-24 10.7-24 24s10.7 24 24 24l176 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-176 0z" />
-                </svg> Baca 5 menit <svg xmlns="http://www.w3.org/2000/svg" class="size-5"
+                </svg> Baca {{ $course->duration_lesson }} menit <svg xmlns="http://www.w3.org/2000/svg" class="size-5"
                     viewBox="0 0 512 512"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
                     <path
                         d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L368 46.1 465.9 144 490.3 119.6c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L432 177.9 334.1 80 172.4 241.7zM96 64C43 64 0 107 0 160L0 416c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-96c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 96c0 17.7-14.3 32-32 32L96 448c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l96 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 64z" />
                 </svg> 1 quiz</p>
             <div class="my-20 flex justify-center w-full">
-                <iframe width="750" height="450" src="https://www.youtube.com/embed/RUTV_5m4VeI?si=AJW9erPSzWtmRRPk"
-                    title="YouTube video player" frameborder="0"
+                <iframe width="750" height="450" src="{{ $course->url_video }}" title="YouTube video player"
+                    frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
             <div class="flex flex-col gap-8">
-                <div class="flex flex-col gap-5">
-                    <h1 class="font-bold text-4xl">Apa Itu Javascript?</h1>
-                    <p class="text-xl">JavaScript adalah bahasa pemrograman yang membuat halaman web menjadi interaktif.
-                        Bersama HTML dan
-                        CSS, JavaScript adalah salah satu dari tiga teknologi utama yang membangun web modern. Jika HTML
-                        adalah kerangka dan CSS adalah tampilan, maka JavaScript adalah perilaku dari sebuah halaman.</p>
-                    </div>
+                @foreach ($topics as $topic)
                     <div class="flex flex-col gap-5">
-                        <h1 class="font-bold text-4xl">Apa Itu Javascript?</h1>
-                        <p class="text-xl">JavaScript adalah bahasa pemrograman yang membuat halaman web menjadi interaktif.
-                            Bersama HTML dan
-                            CSS, JavaScript adalah salah satu dari tiga teknologi utama yang membangun web modern. Jika HTML
-                            adalah kerangka dan CSS adalah tampilan, maka JavaScript adalah perilaku dari sebuah halaman.</p>
+                        <h1 class="font-bold text-4xl">{{ $topic->title }}</h1>
+                        <p class="text-xl text-justify">{{ $topic->content }}
+                        </p>
                     </div>
-                    <div class="flex flex-col gap-5">
-                        <h1 class="font-bold text-4xl">Apa Itu Javascript?</h1>
-                        <p class="text-xl">JavaScript adalah bahasa pemrograman yang membuat halaman web menjadi interaktif.
-                            Bersama HTML dan
-                            CSS, JavaScript adalah salah satu dari tiga teknologi utama yang membangun web modern. Jika HTML
-                            adalah kerangka dan CSS adalah tampilan, maka JavaScript adalah perilaku dari sebuah halaman.</p>
-                    </div>
-                    <div class="flex flex-col gap-5">
-                        <h1 class="font-bold text-4xl">Apa Itu Javascript?</h1>
-                        <p class="text-xl">JavaScript adalah bahasa pemrograman yang membuat halaman web menjadi interaktif.
-                            Bersama HTML dan
-                            CSS, JavaScript adalah salah satu dari tiga teknologi utama yang membangun web modern. Jika HTML
-                            adalah kerangka dan CSS adalah tampilan, maka JavaScript adalah perilaku dari sebuah halaman.</p>
-                    </div>
+                @endforeach
             </div>
-            
+
             <div class="w-full flex justify-center my-15 sm:my-25">
-                <p class="flex w-150 bg-[#CED1F7] rounded-xl px-3 py-3 gap-2 text-base shadow-md"><svg
+                <p class="flex w-150 bg-[#CED1F7] rounded-xl px-3 py-3 gap-2 text-base shadow-md text-justify"><svg
                         xmlns="http://www.w3.org/2000/svg" class="size-6 fill-orange-200"
                         viewBox="0 0 384 512"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
                         <path
                             d="M296.5 291.1C321 265.2 336 230.4 336 192 336 112.5 271.5 48 192 48S48 112.5 48 192c0 38.4 15 73.2 39.5 99.1 21.3 22.4 44.9 54 53.3 92.9l102.4 0c8.4-39 32-70.5 53.3-92.9zm34.8 33C307.7 349 288 379.4 288 413.7l0 18.3c0 44.2-35.8 80-80 80l-32 0c-44.2 0-80-35.8-80-80l0-18.3C96 379.4 76.3 349 52.7 324.1 20 289.7 0 243.2 0 192 0 86 86 0 192 0S384 86 384 192c0 51.2-20 97.7-52.7 132.1zM144 184c0 13.3-10.7 24-24 24s-24-10.7-24-24c0-48.6 39.4-88 88-88 13.3 0 24 10.7 24 24s-10.7 24-24 24c-22.1 0-40 17.9-40 40z" />
-                    </svg>Tips: Gunakan const sebagai pilihan utama. Ganti ke let hanya jika nilainya perlu diubah di
-                    kemudian
-                    hari. Hindari penggunaan var di kode modern.</p>
+                    </svg>Tips: {{ $course->tips }}</p>
             </div>
             <div class="flex justify-center w-full">
                 <div class="flex px-5 py-7 bg-primary shadow-xl gap-10 md:gap-20 w-fit items-center rounded-xl">
                     <p class="font-bold text-2xl md:text-4xl text-white">Sudah paham materinya?</p>
-                    <x-button type="course" size="very-large" href="/lesson/quiz">Mulai Quiz!</x-button>
+                    <x-button type="course" size="very-large" href="{{ route('quiz', $course->id) }}">Mulai Quiz!</x-button>
                 </div>
             </div>
         </main>

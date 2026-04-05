@@ -7,16 +7,23 @@ use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\CourseUserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InfoUserController;
 use App\Http\Controllers\LessonController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+
+use function Symfony\Component\String\u;
 
 Route::get('/', [HomeController::class, 'Home'])->name('home');
 Route::get('/about', [AboutController::class, 'About'])->name('about');
-Route::get('/contact', [ContactController::class, 'Contact'])->name('contact');
-Route::get('/course', [CourseController::class, 'Course'])->name('course');
+Route::get('/course', [CourseUserController::class, 'Course'])->name('course');
+Route::get('/contact', [ContactController::class, 'showContact'])->name('contact');
+Route::post('/contact', [ContactController::class, 'contact'])->name('contact.post');
 
 Route::middleware('guest')->group(function() {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -26,15 +33,16 @@ Route::middleware('guest')->group(function() {
 });
     
 Route::middleware('auth')->group(function() {
+    Route::resource('profiles', ProfileController::class);
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-    Route::get('/lesson', [LessonController::class, 'Lesson'])->name('lesson');
-    Route::get('/lesson/quiz', [QuizController::class, 'Quiz'])->name('quiz');
-});
+    Route::get('/lesson/{course}', [LessonController::class, 'Lesson'])->name('lesson');
+    Route::get('/lesson/{course}/quiz', [QuizController::class, 'Quiz'])->name('quiz');
 
-Route::middleware('is-admin')->group(function() {
+    });
+    
+    Route::middleware('is-admin')->group(function() {
     Route::get('/admin/dashboard', [AdminController::class, 'adminDashboard'])->name('dashboard');
-    Route::get('/admin/user', [AdminController::class, 'User'])->name('user');
-    Route::get('/admin/course', [AdminController::class, 'adminCourse'])->name('adminCourse');
-    Route::get('/admin/course/add', [AdminController::class, 'adminCourseAdd'])->name('adminCourseAdd');
-    Route::get('/admin/course/edit', [AdminController::class, 'adminCourseEdit'])->name('adminCourseEdit');
+    Route::resource('users', InfoUserController::class);
+    Route::resource('courses', CourseController::class);
+
 });

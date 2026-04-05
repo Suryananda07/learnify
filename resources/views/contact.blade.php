@@ -8,10 +8,10 @@
         <p class="text-lg sm:text-xl text-[#999999] text-center mt-8 w-full sm:w-[85%] md:w-[70%] lg:w-[50%]">Tim kami selalu siap membantumu. Kirimkan pesan atau
             pertanyaan seputar platform Learnify, dan kami akan segera
             membalasnya.</p>
-        <form action="POST" action="" class="flex flex-col gap-6 mt-20 w-full md:w-[90%]">
+        <form method="POST" action="{{ route('contact.post') }}" class="flex flex-col gap-6 mt-20 w-full md:w-[90%]">
             @csrf
             <x-input label="Name" name="name" placeholder="Enter your name" :required="true" />
-            <x-input label="Surname" name="surname" placeholder="Enter your surname" :required="true" />
+            <x-input label="Username" name="username" placeholder="Enter your username" :required="true" />
             <x-input label="Email" name="email" type="email" placeholder="Enter your email" :required="true" />
             <div class="flex flex-col">
                 <label for="message">Message</label>
@@ -27,7 +27,7 @@
                     </p>
                 @enderror
             </div>
-            <x-button>Login</x-button>
+            <x-button buttonType="submit">Login</x-button>
         </form>
     </section>
 @endsection

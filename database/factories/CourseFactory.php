@@ -21,8 +21,9 @@ class CourseFactory extends Factory
     {
         return [
             'title' => fake()->catchPhrase(),
-            'description' => fake()->sentence(15),
-            'image' => fake()->imageUrl(800, 800, 'technology'),
+            'description' => fake()->paragraph(5),
+            'tips' => fake()->paragraph(5),
+            'url_video' => fake()->imageUrl(800,800, 'tecnology'),
             'user_id' => User::where('role', 'admin')->inRandomOrder()->value('id') ?? User::factory()->create(['role' => 'admin' ])->id,
             'category_id' => Category::inRandomOrder()->first()->id ?? Category::factory()
         ];

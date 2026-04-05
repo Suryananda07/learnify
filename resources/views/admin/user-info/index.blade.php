@@ -6,13 +6,16 @@
     <div x-data="{ open: false, role: '{{ request('role', 'allUser') }}', selectedLabel: '{{ request('role', 'allUser') === 'admin' ? 'Admin' : (request('role', 'allUser') === 'user' ? 'User' : 'All User') }}' }">
         <div class="flex justify-between">
             <h1 class="font-medium text-base sm:text-lg sm:text-2xl">Users</h1>
-            <img src="{{ asset('assets/author-img.png') }}" alt="" class="size-7 sm:size-10 rounded-full">
+            <a href="{{ route('profiles.edit', auth()->id()) }}">
+                <img src="{{ auth()->user()->image ? asset('storage/' . auth()->user()->image) : asset('assets/author-img.png') }}"
+                    alt="" class="size-10 rounded-full">
+            </a>
         </div>
         <p class="mt-10 text-[#717182] text-xs sm:text-base">Admin > Users</p>
         <div class="mt-11">
-            <h2 class="font-medium text-xl">Manage Users</h2>
+            <h2 class="font-medium text-xl">Manage Users Editt</h2>
             <div class="flex gap-3 items-start w-full">
-                <form action="{{ route('user') }}" method="GET" class="flex gap-3 flex-1">
+                <form action="{{ route('profiles.edit', auth()->id()) }}" method="GET" class="flex gap-3 flex-1">
                     <x-input name="search" placeholder="Search for course" type="search" />
                     <x-button>Search</x-button>
                 </form>
@@ -32,16 +35,13 @@
                         x-transition:leave-start="opacity-100 scale-100 translate-y-0"
                         x-transition:leave-end="opacity-0 scale-95 -translate-y-2"
                         class="flex flex-col gap-3 pt-3 bg-white rounded-lg shadow-xl">
-                        <a href="{{ route('user', ['role' => 'allUser']) }}"
-                            class="cursor-pointer">
+                        <a href="{{ route('users.index', ['role' => 'allUser']) }}" class="cursor-pointer">
                             All User
                         </a>
-                        <a href="{{ route('user', ['role' => 'admin']) }}"
-                            class="cursor-pointer">
+                        <a href="{{ route('users.index', ['role' => 'admin']) }}" class="cursor-pointer">
                             Admin
                         </a>
-                        <a href="{{ route('user', ['role' => 'user']) }}"
-                            class="cursor-pointer">
+                        <a href="{{ route('users.index', ['role' => 'user']) }}" class="cursor-pointer">
                             User
                         </a>
                     </div>
@@ -65,14 +65,23 @@
                             <td class="px-2 sm:px-4 py-4 text-gray-400">{{ $user->email }}</td>
                             <td class="px-2 sm:px-4 py-4">{{ $user->role }}</td>
                             <td class="px-2 sm:px-4 py-4">
-                                <a href="" class="hover:text-purple-600 transition font-medium">Edit</button>
+                                <a href="{{ route('users.edit', $user->id) }}"
+                                    class="hover:text-purple-600 transition font-medium">Edit</button>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
             <div class="flex justify-center py-5 md:py-11.5">
-                <x-button type="admin">View All</x-button>
+                @if (request('view') === 'all')
+                    <a href="{{ route('users.index', ['role' => request('role')]) }}">
+                        <x-button type="admin">Show Less</x-button>
+                    </a>
+                @else
+                    <a href="{{ route('users.index', ['role' => request('role'), 'view' => 'all']) }}">
+                        <x-button type="admin">Show All</x-button>
+                    </a>
+                @endif
             </div>
         </div>
     </div>

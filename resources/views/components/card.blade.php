@@ -11,7 +11,7 @@
             <p class="text-base text-slate-600">{{ $course->description }}</p>
         </div>
         <div class="">
-            <x-button href='/lesson'>Read More</x-button>
+            <x-button href="{{ route('lesson', $course->id) }}">Read More</x-button>
         </div>
     </div>
     <div

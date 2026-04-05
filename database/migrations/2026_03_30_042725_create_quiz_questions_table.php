@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('option_b');
             $table->string('option_c');
             $table->string('option_d');
-            $table->string('correct_answer', 1);
-            $table->integer('order');
-            $table->foreignId('course_id');
+            $table->integer('correct_answer');
+            $table->integer('order')->default(0);
+            $table->foreignId('course_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

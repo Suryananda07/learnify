@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('username', 50)->unique();
             $table->string('password');
             $table->enum('role', ['user', 'admin'])->default('user');
-            $table->string('image')->nullable()->default('assets/author-img.png');
+            $table->string('image')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

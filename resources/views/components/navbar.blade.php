@@ -7,14 +7,15 @@
             <x-nav-link href="/course">Courses</x-nav-link>
             <x-nav-link href="/about">About Us</x-nav-link>
             <x-nav-link href="/contact">Contact</x-nav-link>
-            @can('verifikasi-info')    
-            <x-nav-link href="/admin/dashboard">Admin</x-nav-link>
+            @can('verifikasi-info')
+                <x-nav-link href="/admin/dashboard">Admin</x-nav-link>
             @endcan
         </div>
         @auth
             <div class="hidden md:flex gap-3">
-                <a href="">
-                    <img src="{{ asset('assets/author-img.png') }}" alt="">
+                <a href="{{ route('profiles.edit', auth()->id()) }}">
+                    <img src="{{ auth()->user()->image ? asset('storage/' . auth()->user()->image) : asset('assets/author-img.png') }}"
+                        alt="" class="size-10 rounded-full">
                 </a>
                 <x-button href="{{ route('logout') }}">Logout</x-button>
             </div>
@@ -46,10 +47,21 @@
             <x-nav-link href="/about">About Us</x-nav-link>
             <x-nav-link href="/contact">Contact</x-nav-link>
         </div>
-        <div class="flex gap-5 sm:gap-7">
-            <x-button href="/register" size="large">Register</x-button>
-            <x-button href="/login" type="outline" size="large">Login</x-button>
-        </div>
+        @auth
+            <div class="flex gap-5 sm:gap-7">
+                <a href="{{ route('profiles.edit', auth()->id()) }}">
+                    <img src="{{ auth()->user()->image ? asset('storage/' . auth()->user()->image) : asset('assets/author-img.png') }}"
+                        alt="" class="size-10 rounded-full">
+                </a>
+                <x-button href="{{ route('logout') }}">Logout</x-button>
+            </div>
+        @endauth
+        @guest
+            <div class="flex gap-5 sm:gap-7">
+                <x-button href="/register" size="large">Register</x-button>
+                <x-button href="/login" type="outline" size="large">Login</x-button>
+            </div>
+        @endguest
     </div>
 
 </header>

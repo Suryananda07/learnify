@@ -43,10 +43,10 @@
                 <x-side-link href="/admin/dashboard" icon="{{ asset('assets/icon_dashboard.png') }}">
                     Dashboard
                 </x-side-link>
-                <x-side-link href="/admin/user" icon="{{ asset('assets/icon_user.png') }}">
+                <x-side-link href="/users" icon="{{ asset('assets/icon_user.png') }}">
                     Users
                 </x-side-link>
-                <x-side-link href="/admin/course" icon="{{ asset('assets/icon_course.png') }}">
+                <x-side-link href="{{ route('courses.index') }}" icon="{{ asset('assets/icon_course.png') }}">
                     Courses
                 </x-side-link>
             </div>

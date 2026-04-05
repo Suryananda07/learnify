@@ -19,8 +19,7 @@ class CourseSeeder extends Seeder
 
         foreach($courses as $course){
             $jumlah = rand(1,5);
-            $huruf = ['a', 'b', 'c', 'd'];
-            $randomHuruf = $huruf[array_rand($huruf)];
+            $randomAnswer = rand(0,3);
             for($i = 1; $i <= $jumlah; $i++){
                 Topic::create([
                     'title' => fake()->catchPhrase(),
@@ -34,7 +33,7 @@ class CourseSeeder extends Seeder
                     'option_b' => fake()->sentence(2),
                     'option_c' => fake()->sentence(2),
                     'option_d' => fake()->sentence(2),
-                    'correct_answer' => $randomHuruf,
+                    'correct_answer' => $randomAnswer,
                     'course_id' => $course->id,
                     'order' => $i
                 ]);

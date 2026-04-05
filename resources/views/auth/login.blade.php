@@ -3,7 +3,7 @@
 @section('title', 'Login')
 
 @section('content')
-    <section class="mt-50 md:mt-15 flex flex-col md:flex-row justify-center items-center gap-10 w-screen h-full">
+    <section class="mt-50 md:mt-3 flex flex-col md:flex-row justify-center items-center gap-10 w-screen h-full">
         <div class="w-[90%] md:w-[45%] bg-white shadow-2xl rounded-xl flex flex-col gap-6 px-8 py-6 border">
             <div class="flex justify-center">
                 <h1 class="font-semibold text-4xl text-center w-[60%]">Welcome Back To Learn<span

@@ -25,7 +25,7 @@
         </div>
     </section>
 
-    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 my-15 sm:my-20 justify-between gap gap-16">
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-10 mt-15 sm:mt-20 justify-between gap gap-16">
         @if ($courses->count() > 0)
             @foreach ($courses as $course)
                 <x-card :course="$course" />

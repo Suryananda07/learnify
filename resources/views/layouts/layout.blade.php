@@ -26,7 +26,7 @@
     @endif
 </head>
 
-<body class="font-poppins md:h-screen">
+<body class="font-poppins md:h-screen overflow-hidden">
     <main class="md:h-[89%]">
         @yield('content')
     </main>
