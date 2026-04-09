@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminCourseController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CourseUserController;
@@ -36,12 +37,17 @@ Route::middleware('auth')->group(function() {
     Route::resource('profiles', ProfileController::class);
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/lesson/{course}', [LessonController::class, 'Lesson'])->name('lesson');
-    Route::get('/lesson/{course}/quiz', [QuizController::class, 'Quiz'])->name('quiz');
+    Route::get('/lesson/{course}/quiz', [QuizController::class, 'quizShow'])->name('quiz');
+    Route::get('/lesson/{course}/quiz/preview', [QuizController::class, 'quizPreview'])->name('quiz-preview');
+    Route::get('/lesson/{course}/quiz/score', [QuizController::class, 'score'])->name('score');
+    Route::post('/lesson/{course}/quiz', [QuizController::class, 'quiz'])->name('quiz.post');
 
     });
     
     Route::middleware('is-admin')->group(function() {
     Route::get('/admin/dashboard', [AdminController::class, 'adminDashboard'])->name('dashboard');
+    Route::get('/admin/category', [CategoryController::class, 'showCategory'])->name('category');
+    Route::post('/admin/category', [CategoryController::class, 'Category'])->name('category.post');
     Route::resource('users', InfoUserController::class);
     Route::resource('courses', CourseController::class);
 

@@ -32,16 +32,12 @@
     </nav>
     <main class="pt-30 pb-15 px-8 md:px-15">
         <h1 class="font-bold text-2xl md:text-4xl">{{ $course->title }}</h1>
-        <form action="{{ route('quiz.post', $course->id) }}" method="POST" class="flex flex-col gap-8 mt-9 md:mt-18">
+        <form action="{{ route('quiz-preview', $course->id) }}" method="GET" class="flex flex-col gap-8 mt-9 md:mt-18">
             @csrf
             @foreach ($questions as $question)
-                <x-question :question="$question" />
+                <x-question :question="$question" :results="$results" />
             @endforeach
-            <div class="">
-                <x-button size="very-large" type="quiz" buttonType="submit">Submit</x-button>
-            </div>
         </form>
-        
     </main>
 </body>
 

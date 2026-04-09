@@ -102,13 +102,13 @@
                 <div class="space-y-6 mt-8">
                     <h2 class="text-lg font-semibold">Quiz Questions</h2> <template x-for="(q, qIndex) in questions"
                         :key="qIndex">
-                        <div class="border pt-6 p-4 rounded-lg space-y-4 relative"> <!-- hapus soal --> <button
-                                type="button" x-show="questions.length > 1" @click="questions.splice(qIndex, 1)"
+                        <div class="border pt-6 p-4 rounded-lg space-y-4 relative">
+                            <button type="button" x-show="questions.length > 1" @click="questions.splice(qIndex, 1)"
                                 class="absolute -top-3 left-1/2 -translate-x-1/2 bg-white border rounded-full w-8 h-8 flex items-center justify-center shadow text-red-500 hover:bg-red-100">
-                                &minus; </button> <!-- pertanyaan --> <input type="text"
-                                :name="'questions[' + qIndex + '][question]'" placeholder="Question"
+                                &minus; </button>
+                            <input type="text" :name="'questions[' + qIndex + '][question]'" placeholder="Question"
                                 class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                                x-model="q.question"> <!-- options -->
+                                x-model="q.question">
                             <div class="space-y-3"> <template x-for="(opt, oIndex) in q.options" :key="oIndex">
                                     <label
                                         class="flex items-center gap-3 border border-gray-300 rounded-lg px-4 py-2 cursor-pointer hover:border-purple-500 transition">

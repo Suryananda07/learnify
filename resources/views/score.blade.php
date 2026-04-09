@@ -31,17 +31,42 @@
         <a href="/" class="font-semibold text-3xl sm:text-[32px]">Learn<span class="text-primary">ify</span></a>
     </nav>
     <main class="pt-30 pb-15 px-8 md:px-15">
-        <h1 class="font-bold text-2xl md:text-4xl">{{ $course->title }}</h1>
-        <form action="{{ route('quiz.post', $course->id) }}" method="POST" class="flex flex-col gap-8 mt-9 md:mt-18">
-            @csrf
-            @foreach ($questions as $question)
-                <x-question :question="$question" />
-            @endforeach
-            <div class="">
-                <x-button size="very-large" type="quiz" buttonType="submit">Submit</x-button>
+        <h1 class="font-bold text-2xl md:text-4xl">Quiz Results</h1>
+        <div class="flex items-center justify-center min-h-[60vh]">
+            <div class="relative size-80 ml-4">
+
+                @php
+                    $radius = 120;
+                    $circumference = 2 * pi() * $radius;
+                    $offset = $circumference - ($percentage / 100) * $circumference;
+                @endphp
+
+                <svg class="w-full h-full transform -rotate-90">
+                    <circle cx="160" cy="160" r="{{ $radius }}" stroke="#e5e7eb" stroke-width="15"
+                        fill="none" />
+                    <circle cx="160" cy="160" r="{{ $radius }}" stroke="#84cc16" stroke-width="15"
+                        fill="none" stroke-linecap="round" stroke-dasharray="{{ $circumference }}"
+                        stroke-dashoffset="{{ $offset }}" class="transition-all duration-700" />
+                </svg>
+
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <span class="text-2xl font-bold text-lime-500">
+                        {{ $percentage }}%
+                    </span>
+                </div>
             </div>
-        </form>
-        
+        </div>
+        <div class="flex justify-center w-full">
+            <x-button href="{{ route('quiz-preview', $course->id) }}" size="large">View Details
+                <x-slot name="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="fill-white"
+                        viewBox="0 0 512 512"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                        <path
+                            d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-105.4 105.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
+                    </svg>
+                </x-slot>
+            </x-button>
+        </div>
     </main>
 </body>
 

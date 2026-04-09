@@ -15,9 +15,9 @@
         <div class="mt-11">
             <h2 class="font-medium text-xl">Manage Users Editt</h2>
             <div class="flex gap-3 items-start w-full">
-                <form action="{{ route('profiles.edit', auth()->id()) }}" method="GET" class="flex gap-3 flex-1">
+                <form action="" method="GET" class="flex gap-3 flex-1">
                     <x-input name="search" placeholder="Search for course" type="search" />
-                    <x-button>Search</x-button>
+                    <x-button buttonType="submit">Search</x-button>
                 </form>
                 <div class="">
                     <x-button @click="open = !open" type="outline" size="base" class="focus:bg-primary focus:text-white">

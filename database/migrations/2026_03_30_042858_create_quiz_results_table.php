@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->float('score');
             $table->json('answers');
-            $table->foreignId('user_id');
-            $table->foreignId('course_id');
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('course_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
