@@ -29,7 +29,7 @@
 <body class="font-poppins flex">
     <aside class="fixed top-0 left-0 flex flex-col items-center lg:items-start w-fit lg:w-55 bg-[#3932A7] h-screen py-4.5">
         <div class="hidden lg:flex lg:justify-end text-white pr-7 w-full">
-            <h1 class=" font-semibold text-2xl text-right">Learnify</h1>
+            <a href="{{ route('home') }}" class=" font-semibold text-2xl text-right">Learnify</a>
         </div>
         <div class="mt-13 flex gap-3.5 lg:bg-primary py-2 px-4 w-full">
             <img src="{{ asset('assets/author-img.png') }}" alt="" class="size-7 sm:size-10 rounded-full">
@@ -49,7 +49,7 @@
                 <x-side-link href="{{ route('courses.index') }}" icon="{{ asset('assets/icon_course.png') }}">
                     Courses
                 </x-side-link>
-                <x-side-link href="{{ route('category') }}" icon="{{ asset('assets/icon_course.png') }}">
+                <x-side-link href="{{ route('category') }}" icon="{{ asset('assets/icon_dashboard.png')}}">
                     Category
                 </x-side-link>
             </div>
